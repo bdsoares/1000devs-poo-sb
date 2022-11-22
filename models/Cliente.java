@@ -6,22 +6,24 @@ public abstract class Cliente implements Conta {
     private final String telefone;
     private double saldo;
     private double limite;
+    private boolean contaAtiva;
 
-    public Cliente(String conta, String agencia, String telefone, double saldo, double limite) {
+    public Cliente(String conta, String agencia, String telefone, double saldo, double limite, boolean contaAtiva) {
         this.conta = conta;
         this.agencia = agencia;
         this.telefone = telefone;
         this.saldo = saldo;
         this.limite = limite;
+        this.contaAtiva = contaAtiva;
     }
 
     @Override
     public void exibirConta() {
-        System.out.println(getConta());
-        System.out.println(getAgencia());
-        System.out.println(getTelefone());
-        System.out.println(getSaldo());
-        System.out.println(getLimite());
+        System.out.println("Conta: " + getConta());
+        System.out.println("Agencia: " + getAgencia());
+        System.out.println("Telefone: " + getTelefone());
+        System.out.printf("Saldo: R$%.2f\n", getSaldo());
+        System.out.printf("Limite: R$%.2f\n", getLimite());
     }
 
     public String getConta() {
@@ -50,5 +52,13 @@ public abstract class Cliente implements Conta {
 
     public void setLimite(double limite) {
         this.limite = limite;
+    }
+
+    public boolean isContaAtiva() {
+        return contaAtiva;
+    }
+
+    public void setContaAtiva(boolean contaAtiva) {
+        this.contaAtiva = contaAtiva;
     }
 }

@@ -6,8 +6,8 @@ public class ClientePj extends Cliente {
     private final String razaoSocial;
     private final String nomeFantasia;
 
-    public ClientePj(String conta, String agencia, String telefone, double saldo, double limite, String cnpj, String[] socios, String razaoSocial, String nomeFantasia) {
-        super(conta, agencia, telefone, saldo, limite);
+    public ClientePj(String conta, String agencia, String telefone, double saldo, double limite, boolean contaAtiva, String cnpj, String[] socios, String razaoSocial, String nomeFantasia) {
+        super(conta, agencia, telefone, saldo, limite, contaAtiva);
         this.cnpj = cnpj;
         this.socios = socios;
         this.razaoSocial = razaoSocial;
@@ -15,16 +15,13 @@ public class ClientePj extends Cliente {
     }
 
     public void exibirConta() {
-        System.out.println(super.getConta());
-        System.out.println(super.getAgencia());
-        System.out.println(super.getTelefone());
-        System.out.println(super.getSaldo());
-        System.out.println(super.getLimite());
-        System.out.println(this.getCnpj());
-        for (String socio : this.getSocios())
-            System.out.println(socio);
-        System.out.println(this.getRazaoSocial());
-        System.out.println(this.getNomeFantasia());
+        super.exibirConta();
+        System.out.println("CNPJ: " + this.getCnpj());
+        System.out.println("Socios:");
+        for (int i = 0; i < getSocios().length; i++)
+            System.out.printf("\tSocio %d: %s\n", i+1, getSocios()[i]);
+        System.out.println("Razão Social: " + this.getRazaoSocial());
+        System.out.println("Nome Fantasia: " + this.getNomeFantasia());
     }
 
     public String getCnpj() {
